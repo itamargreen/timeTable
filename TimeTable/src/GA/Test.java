@@ -1,6 +1,8 @@
 package GA;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 
 public class Test {
@@ -12,9 +14,14 @@ public class Test {
 	static int hourNum = 3;
 	static int numOfGroups = 2;
 	public static int[] max = { numOfSubj, dayNum, hourNum, roomNum, numOfTeachers, numOfGroups };
-
+	
 	public static void main(String[] args) {
-
+		/**
+		 * assigning teachers to lessons and vice versa 
+		 */
+		
+		
+		
 		Population pop = new Population(50, true);
 		// Evolve population for 100 generations
 		pop = Algorithm.evolvePopulation(pop);
@@ -138,3 +145,4 @@ class hour {
 		return sb.toString();
 	}
 }
+

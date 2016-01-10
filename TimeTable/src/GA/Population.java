@@ -13,7 +13,7 @@ public class Population {
         if (initialise) {
             // Loop and create individuals
             for (int i = 0; i < size(); i++) {
-                Individual newIndividual = new Individual();
+            	Individual newIndividual = new Individual();
                 newIndividual.generateIndividual(true);
                 saveIndividual(i, newIndividual);
             }
@@ -26,7 +26,7 @@ public class Population {
     }
 
     public Individual getFittest() {
-        Individual fittest = individuals[0];
+    	Individual fittest = individuals[0];
         // Loop through individuals to find fittest
         for (int i = 0; i < size(); i++) {
         	//System.out.println(getIndividual(i));

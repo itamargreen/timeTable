@@ -23,7 +23,7 @@ public class Teacher {
 		try {
 			this.name = Constants.teacher[this.id];
 		} catch (Exception e) {
-System.err.println("hi");
+			System.err.println("hi");
 		}
 		teaches.add(l);
 	}

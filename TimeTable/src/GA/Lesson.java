@@ -1,11 +1,13 @@
 package GA;
 
-public class Lesson{
+public class Lesson {
 	private int day;// 3
 	private int hour;// 5
 	private Teacher teacher;
 	private StudentGroup group;
 	private String name;
+	private int lessons;
+	private boolean must;
 	private int id;
 	private int room;
 
@@ -33,6 +35,10 @@ public class Lesson{
 
 	}
 
+	public Lesson() {
+
+	}
+
 	public Lesson(String gene) {
 		fromGene(gene);
 	}
@@ -41,17 +47,17 @@ public class Lesson{
 		int[] max = Test.max;
 		String curr = "";
 		String dayString = gene.substring(0, max[1]);
-		curr+=dayString;
-		String hourString = gene.substring(curr.length(), max[2]+3);
-		curr+=hourString;
-		String roomString = gene.substring(curr.length(), max[3]+6);
-		curr+=roomString;
-		String teacherID = gene.substring(curr.length(), max[4]+10);
-		curr+=teacherID;
-		String group = gene.substring(curr.length(), max[5]+12);
-		curr+=group;
+		curr += dayString;
+		String hourString = gene.substring(curr.length(), max[2] + 3);
+		curr += hourString;
+		String roomString = gene.substring(curr.length(), max[3] + 6);
+		curr += roomString;
+		String teacherID = gene.substring(curr.length(), max[4] + 10);
+		curr += teacherID;
+		String group = gene.substring(curr.length(), max[5] + 12);
+		curr += group;
 		String idString = gene.substring(curr.length(), gene.length());
-		curr+=idString;
+		curr += idString;
 		this.id = Integer.parseInt(idString, 2);
 		this.day = Integer.parseInt(dayString, 2);
 		this.hour = Integer.parseInt(hourString, 2);
@@ -171,4 +177,20 @@ public class Lesson{
 		this.room = room;
 	}
 
+	public static Lesson generate() {
+		Lesson l = new Lesson();
+		int rand = (int) Math.random() * Constants.lessons.length;
+		String name = Constants.lessons[rand];
+		l.name = name;
+		String[] names = Constants.teachersAndLessons.get(name);
+		rand = (int) Math.random() * names.length;
+		l.teacher = Constants.teachers.get(names[rand]);
+		for (String s : Constants.must) {
+			if (s == name)
+				l.must = true;
+		}
+		l.lessons = Constants.perWeek.get(names);
+		return l;
+
+	}
 }
