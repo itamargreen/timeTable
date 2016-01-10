@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 
 public class Test {
 	static Population pop = new Population(100, true);
-	static String[] notLearn = { "Bible" };
 
 	public static void main(String[] args) {
 		Const.construct();

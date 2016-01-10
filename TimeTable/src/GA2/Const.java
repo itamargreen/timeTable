@@ -9,10 +9,6 @@ public class Const {
 	{ 4, 8, 30 };
 	public static String[] lessons = { "Math", "Majors", "Literature", "Civics", "History", "Bible", "English",
 			"Sports", "Homeroom" };
-	public static String[] lessonsWith = { "Math", "Majors", "Literature", "Civics", "History", "Bible", "English",
-			"Sports", "Homeroom" };
-	public static String[] lessonsWithoutHome = { "Math", "Majors", "Literature", "Civics", "History", "Bible",
-			"English", "Sports" };
 	public static String[] teachers = { "Naama Levintal", "Alla Marianovski", "Janna Tzimring", "Dora Zaltzberg",
 			"Lowell Blackman", "Neomi Filer", "Avishai", "Moshe Pavlotski", "Dganit", "Liat Gilad Abovich ",
 			"Anna Ostrovsky", "Ella Cochavi", "Monica Itah", "Broin Kabakovich", "Levana Steein", "Michal",
@@ -25,45 +21,31 @@ public class Const {
 	public static HashMap<String, String[]> teachersAndLessons = new HashMap<String, String[]>();
 
 	public static void construct() {
-		int l1 = lessons.length;
-		int l2 = Test.notLearn.length;
-		String[] learn = new String[l1 - l2];
-		for (int i = 0; i < lessons.length; i++) {
-			for (int j = 0; j < Test.notLearn.length; j++) {
-				if (lessons[i] != Test.notLearn[j]) {
-					try {
-						learn[i] = lessons[i];
-					} catch (Exception e) {
-						continue;
-					}
-				}
-			}
 
-		}
-		lessons = learn;
 		teachersAndLessons.put("Math", new String[] { "Yulia Skortovski", "Yakov", "Riki Lifman-Yakov", "Kira Segel",
 				"Silvio Shtesel", "Estela Gotlieb", "Ina" });
+		teachersAndLessons.put("OOP", new String[] { "Alla Marianovski" });
+		teachersAndLessons.put("Models", new String[] { "Dganit" });
+		teachersAndLessons.put("Computers", new String[] { "Dora Zaltzberg" });
+		teachersAndLessons.put("Biology", new String[] { "Liat Gilad Abovich ", "Romi Israeli" });
+		teachersAndLessons.put("Physics", new String[] { "Janna Tzimring", "Anna Ostrovsky" });
+		teachersAndLessons.put("Phys lab", new String[] { "Janna Tzimring", "Anna Ostrovsky" });
+		teachersAndLessons.put("Chemistry",
+				new String[] { "Greensteein", "Sarah (Chemistry)", "Rut Valdman", "Miriam" });
 		teachersAndLessons.put("Civics", new String[] { "Yoav Katz", "Neomi Filer" });
 		teachersAndLessons.put("History",
 				new String[] { "Neta Barkai", "Neomi Filer", "Rut Benun", "Yehudit", "Yoav Katz" });
 		teachersAndLessons.put("Literature", new String[] { "Neta Barkai", "Yakov", "Naama Levintal" });
 		teachersAndLessons.put("Bible", new String[] { "Neta Barkai", "Sarah (Bible)" });
+		teachersAndLessons.put("Biotechnology", new String[] { "Liat Gilad Abovich" });
+		teachersAndLessons.put("Arabic", new String[] { "Geula Seti", "Sali Yisaayahu" });
+		teachersAndLessons.put("Bio lab", new String[] { "Pnina", "Liat Gilad Abovich" });
+		teachersAndLessons.put("Chemistry lab", new String[] { "Pnina" });
 		teachersAndLessons.put("English",
 				new String[] { "Lowell Blackman", "Monica Itah", "Broina Kabakovich", "Levana Steein" });
 		teachersAndLessons.put("Sports", new String[] { "Moshe Pavlotski", "Ronen Miller", "Rachel Freibun" });
 		teachersAndLessons.put("Homeroom",
 				new String[] { "Naama Levintal", "Dora Zaltzberg", "Yehudit", "Ela Hadad", "Yulia Skortovski" });
-
-		teachersAndLessons.put("OOP", new String[] { "Alla Marianovski" });
-		teachersAndLessons.put("Models", new String[] { "Dganit" });
-		teachersAndLessons.put("Computers", new String[] { "Dora Zaltzberg" });
-		teachersAndLessons.put("Biology", new String[] { "Romi Israeli" });
-		teachersAndLessons.put("Physics", new String[] { "Janna Tzimring", "Anna Ostrovsky" });
-		teachersAndLessons.put("Chemistry",
-				new String[] { "Greensteein", "Sarah (Chemistry)", "Rut Valdman", "Miriam" });
-
-		teachersAndLessons.put("Biotechnology", new String[] { "Liat Gilad Abovich" });
-		teachersAndLessons.put("Arabic", new String[] { "Geula Seti", "Sali Yisaayahu" });
 
 		roomSpecific.put("Alla Marianovski", 26);
 		roomSpecific.put("Dora Zaltzberg", 34);
@@ -76,54 +58,23 @@ public class Const {
 		for (int i = 0; i < lessons.length; i++) {
 			switch (lessons[i]) {
 			case "Math":
-				try {
-					perWeek.put(lessons[i], 7);
-				} catch (Exception e) {
-
-				}
+				perWeek.put(lessons[i], 7);
+			case "Biology":
+				perWeek.put(lessons[i], 4);
 			case "Bible":
-				try {
-					perWeek.put(lessons[i], 2);
-				} catch (Exception e) {
-
-				}
+				perWeek.put(lessons[i], 2);
 			case "English":
-				try {
-					perWeek.put(lessons[i], 6);
-				} catch (Exception e) {
-
-				}
+				perWeek.put(lessons[i], 6);
 			case "History":
-				try {
-					perWeek.put(lessons[i], 4);
-				} catch (Exception e) {
-
-				}
+				perWeek.put(lessons[i], 4);
 			case "Civics":
-				try {
-					perWeek.put(lessons[i], 2);
-				} catch (Exception e) {
-
-				}
-
+				perWeek.put(lessons[i], 2);
 			case "Literature":
-				try {
-					perWeek.put(lessons[i], 3);
-				} catch (Exception e) {
-
-				}
+				perWeek.put(lessons[i], 3);
 			case "Sports":
-				try {
-					perWeek.put(lessons[i], 2);
-				} catch (Exception e) {
-
-				}
+				perWeek.put(lessons[i], 2);
 			case "Homeroom":
-				try {
-					perWeek.put(lessons[i], 1);
-				} catch (Exception e) {
-
-				}
+				perWeek.put(lessons[i], 1);
 			}
 		}
 		for (int i = 0; i < majors.length; i++) {

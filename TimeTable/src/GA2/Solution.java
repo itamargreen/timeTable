@@ -10,7 +10,6 @@ public class Solution {
 	Random r = new Random();
 	private TimeSlot[][] slots = new TimeSlot[5][9];
 	int free = 0;
-	boolean home;
 	private HashMap<String, String> teachersAndLessons = new HashMap<String, String>();
 
 	public void generateIndiv() {
@@ -31,20 +30,15 @@ public class Solution {
 					slots[i][j] = TimeSlot.freePeriod(i, j);
 					free++;
 				} else {
-					if (subj != "Math" && subj != "English" && subj != "Homeroom")
+					if (subj != "Math" && subj != "English")
 						slots[i][j] = new TimeSlot(i, j, room, Const.lessons[subject], teach);
-					else if (subj == "Homeroom") {
-						slots[i][j] = new TimeSlot(i, j, room, Const.lessons[subject], "Your teacher");
-						if (!home)
-							home = true;
-					} else {
+					else {
 						slots[i][j] = new TimeSlot(i, j, room, Const.lessons[subject], "Your teacher");
 					}
+
 				}
-				Const.lessons = Const.lessonsWithoutHome;
 			}
 		}
-		Const.lessons = Const.lessonsWith;
 	}
 
 	public int getFitness() {
@@ -105,30 +99,24 @@ public class Solution {
 					}
 				}
 				if (slots[j][k] == after(j, k) && slots[j][k] != before(j, k)) {
-
-					for (Lesson l : slots[j][k].getL()) {
-						for (Lesson l1 : after(j, k).getL()) {
-							if (l.getRoom() == l1.getRoom())
-								res += 5;
-						}
-					}
+					
+					res += 10;
 				}
 			}
 		}
 		for (Entry<Lesson, Integer> entry : perWeek.entrySet()) {
+			if(entry.getKey().getSubject() == "Homeroom" && entry.getValue() == 1) {
+				res+=5;
+			}
 			if (entry.getKey().getSubject() != "Majors") {
 				if (entry.getValue() == Const.perWeek.get(entry.getKey()))
-					res += 10;
+					res += 5;
 			} else {
 				if (entry.getValue() == Const.majorsPerWeek.get(entry.getKey()))
 					res += 10;
 
 			}
-		}
-		if (perWeek.containsKey("Homeroom")) {
-			if (perWeek.get("Homeroom") == 1) {
-				res += 20;
-			}
+
 		}
 		if (lessonCount() == 44) {
 			res += 10;
